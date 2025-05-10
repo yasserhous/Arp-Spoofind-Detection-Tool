@@ -1,74 +1,55 @@
-# Project Title
+# ARP Spoofing Detection
 
-The purpose of this project is educational. To understand network packets, I created a packet sniffer script that monitors the traffic of my device and detects possible DNS Spoofing.
+## Overview
 
-Table of Contents  
-[Description](#description)  
-[Technologies](#technologies)  
-Features  
-Installation  
-Usage  
-Contributing  
-License  
-Acknowledgements  
+The primary goal of this project was to understand how to protect devices on public networks against a variety of attacks, starting with ARP spoofing. This attack is a common form of Man-in-the-Middle (MITM) attack, where an attacker can intercept and manipulate communication between two devices. By simulating the attack in a controlled environment, I gained valuable insights into how to detect and prevent ARP spoofing on real networks.
 
-## Description  
-Provide a detailed description of the project, including:
+### Tools Used
 
-What the project is
-Why it was created
-The specific problem it addresses
-The main goals or objectives  
-## Technologies
-List the technologies, tools, and libraries your project uses. Example:
+Kali Linux: Chosen for its built-in penetration testing tools like Wireshark (for packet capture) and arpspoof (for performing the ARP spoofing attack).
 
-Python
-Flask
-MySQL
-JavaScript
-Docker
-Features
-Highlight the key features of your project, such as:
+arpspoof: Used to send ARP packets to the target and the router, redirecting the network traffic through the attacker's machine.
 
-Feature 1: Description of the feature
-Feature 2: Description of the feature
-Feature 3: Description of the feature
-Installation
-Explain how to set up and install the project locally. Provide step-by-step instructions. Example:
+Wireshark: Utilized to monitor and capture network traffic, especially focusing on HTTP POST requests to steal credentials.
 
-bash
-Copy code
-# Clone the repository
-git clone https://github.com/username/project-name.git
+iptables & NAT configuration: Ensured traffic forwarding and seamless internet access for the target machine while maintaining control over the traffic.
 
-# Install dependencies
-cd project-name
-pip install -r requirements.txt
-Usage
-Provide examples and instructions on how to use the project after installation. Include code snippets or screenshots if necessary. Example:
+### Challenges
 
-bash
-Copy code
-# To start the project
-python main.py
-Or provide sample commands if it’s a CLI tool.
+Network configuration issues: The initial issue of not being able to see devices on the network due to the VM being in NAT mode was resolved by switching to Bridge mode.
 
-Contributing
-If you'd like others to contribute to the project, include guidelines here:
+Network connection instability: The target phone often blocked the attack due to suspicious behavior, requiring me to constantly reconnect the device to the network.
 
-Fork the repo
-Create a new branch
-Commit your changes
-Push to the branch
-Open a pull request
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Packet forwarding and NAT rules: Proper setup of traffic forwarding and configuring the NAT table was essential to ensure the target's internet connection remained active during the attack.
 
-Acknowledgements
-List any individuals, libraries, tools, or resources that helped you in the development of the project.
+### Attack Verification
 
-Optional Section (if applicable)
-Screenshots
-Include images to demonstrate how your project works or how it looks in action.
+The success of the ARP spoofing attack was verified by:
 
-Feel free to adjust and modify sections as needed, adding any other information that will help users or collaborators understand and contribute to the project.
+Monitoring network traffic on Wireshark, where I could see the packets from the target machine being captured.
+
+Successfully intercepting sensitive data (such as credentials) from the victim machine by capturing unencrypted HTTP POST requests.
+
+### Risks of ARP Spoofing
+ARP spoofing in public networks poses serious risks, including:
+
+Data interception: Sensitive data like login credentials can be intercepted, leading to identity theft, fraud, or impersonation.
+
+Denial of Service (DoS): The attack can cause network disruption if not mitigated.
+
+MITM attacks: The attacker can inject malicious content or alter communications between devices.\
+
+### Defensive Measures
+
+To protect against ARP spoofing, I recommend:
+
+Using VPNs on public networks to ensure all data is encrypted.
+
+Implementing ARP spoofing detection tools that monitor the network for suspicious activity, such as multiple MAC addresses mapping to the same IP address.
+
+Configuring static ARP entries in critical systems to avoid relying on dynamic ARP resolutions.
+
+## Conclusion
+This project provided me with hands-on experience in both performing and defending against ARP spoofing attacks, enhancing my understanding of network security and penetration testing. It also highlighted the importance of encryption and continuous monitoring in securing sensitive data on public networks.
+
+
