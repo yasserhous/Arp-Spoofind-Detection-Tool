@@ -9,6 +9,8 @@ I performed a controlled spoofing attack on my home lab network:
 
 ** 1. Network Setup
 I used two virtual machines: a Kali Linux VM as the attacker and another machine as the target. Both were configured in bridged mode to ensure they were on the same local network and could communicate directly.
+![image](https://github.com/user-attachments/assets/0ef16ec6-f58c-49ef-b577-67769b467caf)
+
 
 ** 2. Performing ARP Spoofing
 Using the arpspoof utility, I targeted the victim and the gateway by sending forged ARP replies. This redirected the victim's network traffic to the attacker, positioning the Kali machine as a man-in-the-middle.
