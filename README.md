@@ -7,19 +7,19 @@ The primary goal of this project was to understand how to protect devices on pub
 ## Step 1 : The Attack
 I performed a controlled spoofing attack on my home lab network:
 
-1. Network Setup
+** 1. Network Setup
 I used two virtual machines: a Kali Linux VM as the attacker and another machine as the target. Both were configured in bridged mode to ensure they were on the same local network and could communicate directly.
 
-2. Performing ARP Spoofing
+** 2. Performing ARP Spoofing
 Using the arpspoof utility, I targeted the victim and the gateway by sending forged ARP replies. This redirected the victim's network traffic to the attacker, positioning the Kali machine as a man-in-the-middle.
 
-3. Packet Forwarding and NAT Configuration
+** 3. Packet Forwarding and NAT Configuration
 To allow traffic to continue flowing through the attacker, I enabled IP forwarding (echo 1 > /proc/sys/net/ipv4/ip_forward) and made the necessary NAT adjustments using iptables to route the traffic correctly.
 
-4. Capturing Sensitive Data
+** 4. Capturing Sensitive Data
 The target machine accessed a test login form over HTTP (unencrypted). On the attacker VM, I used Wireshark to monitor network traffic and applied filters to capture HTTP POST requests. Following the HTTP stream revealed the credentials submitted by the victim.
 
-5. Outcome
+** 5. Outcome
 The spoofing was successful. The credentials submitted via the insecure site were clearly visible on the attacker's machine, demonstrating the critical risk of ARP spoofing on unsecured networks.
 
 ### Tools Used
