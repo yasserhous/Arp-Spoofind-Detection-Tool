@@ -34,6 +34,12 @@ image 1:
 
 Once step 4 of the attack has been completed, the victim machine will be able to browse the internet with no suspicion
 
+5- At this point of the attack, The threat actor is officially spying on the victim. We can test if the attacker can successfully intercept the communication between the victim and the internet by simulating a signin on a http website: http://testphp.vulnweb.com.  When we visit that website using the victim machine , and log in using dummy values, we should be able to view the login form entries by using a packet sniffer like wireshark on the attacker's machine.<br/>
+![image](https://github.com/user-attachments/assets/67b6cb22-ba3f-44c2-b2a5-cd16e4f57d10)
+
+Note: On this website, you do not need to create a profile to log in as this is a testing website. Once you have logged in , you can run your packet sniffer and find the login credentials by searching through the http traffic <br/>
+![image](https://github.com/user-attachments/assets/1ed531ee-086c-425c-9ab0-aa97e7e39291)
+
 
 ** 3. Packet Forwarding and NAT Configuration
 To allow traffic to continue flowing through the attacker, I enabled IP forwarding (echo 1 > /proc/sys/net/ipv4/ip_forward) and made the necessary NAT adjustments using iptables to route the traffic correctly.
