@@ -89,6 +89,9 @@ Implementing ARP spoofing detection tools that monitor the network for suspiciou
 Configuring static ARP entries in critical systems to avoid relying on dynamic ARP resolutions.
 
 ### Arp Spoofing Detection tool
+One method to verify if there is an ongoing ARP spoofing attack, is to scan the network and find if multiple MAC addresses to the router's ip address. MAC addresses are unique, and every ip should have its own MAC address. When an ARP spoofing is in effect, the attacker will spoof their ip to pretend to be the router machine, and therefore the MAC address of the attacker will also map to the router's ip. 
+
+main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. 
 
 ## Conclusion
 This project provided me with hands-on experience in both performing and defending against ARP spoofing attacks, enhancing my understanding of network security and penetration testing. It also highlighted the importance of encryption and continuous monitoring in securing sensitive data on public networks.
