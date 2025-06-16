@@ -7,7 +7,7 @@ The primary goal of this project was to understand how to protect devices on pub
 ## Step 1 : The Attack
 I performed a controlled spoofing attack on my home lab network:
 
-<b>1. Network Setup</b>
+<b><color:"red"/>1. Network Setup</b>
 I used two virtual machines: a Kali Linux VM as the attacker and another machine as the target. Both were configured in bridged mode to ensure they were on the same local network and could communicate directly.
 ![image](https://github.com/user-attachments/assets/0ef16ec6-f58c-49ef-b577-67769b467caf)
 
