@@ -45,9 +45,6 @@ At this point of the attack, The threat actor is officially spying on the victim
 Note: On this website, you do not need to create a profile to log in as this is a testing website. Once you have logged in , you can run your packet sniffer and find the login credentials by searching through the http traffic <br/>
 ![image](https://github.com/user-attachments/assets/1ed531ee-086c-425c-9ab0-aa97e7e39291)
 
-** 5. Outcome
-The spoofing was successful. The credentials submitted via the insecure site were clearly visible on the attacker's machine, demonstrating the critical risk of ARP spoofing on unsecured networks.
-
 ### Tools Used
 
 Kali Linux: Chosen for its built-in penetration testing tools like Wireshark (for packet capture) and arpspoof (for performing the ARP spoofing attack).
@@ -96,10 +93,10 @@ Configuring static ARP entries in critical systems to avoid relying on dynamic A
 ### Arp Spoofing Detection tool
 One method to verify if there is an ongoing ARP spoofing attack, is to scan the network and find if multiple MAC addresses to the router's ip address. MAC addresses are unique, and every ip should have its own MAC address. When an ARP spoofing is in effect, the attacker will spoof their ip to pretend to be the router machine, and therefore the MAC address of the attacker will also map to the router's ip. 
 
-main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. The first step of the application is to generate an updated ARP table by: 
-clearing arp cache
-run nmap to find all ips on the network(Please ensure you have the right to execute command on network as this can be illegal)
-ping every ip found with nmap to generate arp table
+main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. The first step of the application is to generate an updated ARP table by: <br/>
+<b>1.</b>clearing arp cache
+<b>2.</b>run nmap to find all ips on the network(Please ensure you have the right to execute command on network as this can be illegal)
+<b>3.</b>ping every ip found with nmap to generate arp table
 
 Once the ARP table has been generated, the application will verify and trigger a response if there are two different MAC addresses found with the same IP.
 
