@@ -91,7 +91,12 @@ Configuring static ARP entries in critical systems to avoid relying on dynamic A
 ### Arp Spoofing Detection tool
 One method to verify if there is an ongoing ARP spoofing attack, is to scan the network and find if multiple MAC addresses to the router's ip address. MAC addresses are unique, and every ip should have its own MAC address. When an ARP spoofing is in effect, the attacker will spoof their ip to pretend to be the router machine, and therefore the MAC address of the attacker will also map to the router's ip. 
 
-main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. 
+main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. The first step of the application is to generate an updated ARP table by: 
+clearing arp cache
+run nmap to find all ips on the network(Please ensure you have the right to execute command on network as this can be illegal)
+ping every ip found with nmap to generate arp table
+
+Once the ARP table has been generated, the application will verify and trigger a response if there are two different MAC addresses found with the same IP.
 
 ## Conclusion
 This project provided me with hands-on experience in both performing and defending against ARP spoofing attacks, enhancing my understanding of network security and penetration testing. It also highlighted the importance of encryption and continuous monitoring in securing sensitive data on public networks.
