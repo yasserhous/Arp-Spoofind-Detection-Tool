@@ -40,13 +40,6 @@ Once step 4 of the attack has been completed, the victim machine will be able to
 Note: On this website, you do not need to create a profile to log in as this is a testing website. Once you have logged in , you can run your packet sniffer and find the login credentials by searching through the http traffic <br/>
 ![image](https://github.com/user-attachments/assets/1ed531ee-086c-425c-9ab0-aa97e7e39291)
 
-
-** 3. Packet Forwarding and NAT Configuration
-To allow traffic to continue flowing through the attacker, I enabled IP forwarding (echo 1 > /proc/sys/net/ipv4/ip_forward) and made the necessary NAT adjustments using iptables to route the traffic correctly.
-
-** 4. Capturing Sensitive Data
-The target machine accessed a test login form over HTTP (unencrypted). On the attacker VM, I used Wireshark to monitor network traffic and applied filters to capture HTTP POST requests. Following the HTTP stream revealed the credentials submitted by the victim.
-
 ** 5. Outcome
 The spoofing was successful. The credentials submitted via the insecure site were clearly visible on the attacker's machine, demonstrating the critical risk of ARP spoofing on unsecured networks.
 
@@ -94,6 +87,8 @@ Using VPNs on public networks to ensure all data is encrypted.
 Implementing ARP spoofing detection tools that monitor the network for suspicious activity, such as multiple MAC addresses mapping to the same IP address.
 
 Configuring static ARP entries in critical systems to avoid relying on dynamic ARP resolutions.
+
+### Arp Spoofing Detection tool
 
 ## Conclusion
 This project provided me with hands-on experience in both performing and defending against ARP spoofing attacks, enhancing my understanding of network security and penetration testing. It also highlighted the importance of encryption and continuous monitoring in securing sensitive data on public networks.
