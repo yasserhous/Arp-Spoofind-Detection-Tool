@@ -7,12 +7,12 @@ The primary goal of this project was to understand how to protect devices on pub
 ## Step 1 : The Attack
 I performed a controlled spoofing attack on my home lab network:
 
-** 1. Network Setup
+<b>1. Network Setup</b>
 I used two virtual machines: a Kali Linux VM as the attacker and another machine as the target. Both were configured in bridged mode to ensure they were on the same local network and could communicate directly.
 ![image](https://github.com/user-attachments/assets/0ef16ec6-f58c-49ef-b577-67769b467caf)
 
 
-** 2. Performing ARP Spoofing
+2. Performing ARP Spoofing
 Using the arpspoof utility, I targeted the victim and the gateway by sending forged ARP replies. ARP stands for Address Resolution Protocol. This protocol is used by machines when they are trying to find the location of a certain ip on the network. the location is the MAC address. Every machine has a unique MAC address. ARP spoofing is the act of telling the victim machine that the ip its looking for is located at the MAC address of the attacker's machine. This will allow the attacker to receive the packets that the victim machine is sending over the network.
 
 The question remains: Which ip address does the attacker want to redirect to its own MAC address ? The answer to that is the gateway ip( the router). By redirecting the router ip to the attacker's MAC address, the attacker ensures that everytime the victim machine needs to communicate with the router, the packets go to the attacker, and this can include confidential information such as passwords Here are the steps:
