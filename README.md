@@ -46,7 +46,7 @@ Note: On this website, you do not need to create a profile to log in as this is 
 ![image](https://github.com/user-attachments/assets/1ed531ee-086c-425c-9ab0-aa97e7e39291)
 
 
-### Part 2: Arp Spoofing Detection tool
+## Part 2: Arp Spoofing Detection tool
 One method to verify if there is an ongoing ARP spoofing attack, is to scan the network and find if multiple MAC addresses to the router's ip address. MAC addresses are unique, and every ip should have its own MAC address. When an ARP spoofing is in effect, the attacker will spoof their ip to pretend to be the router machine, and therefore the MAC address of the attacker will also map to the router's ip. 
 
 main.py is an application that the victim will run on an network to verify if there is an ongoing ARP spoofing attack. The first step of the application is to generate an updated ARP table by: <br/>
@@ -59,7 +59,7 @@ Once the ARP table has been generated, the application will verify and trigger a
 Please consult the file main.py to view the code.
 
 
-### Tools Used
+## Tools Used
 
 Kali Linux: Chosen for its built-in penetration testing tools like Wireshark (for packet capture) and arpspoof (for performing the ARP spoofing attack).
 
@@ -69,7 +69,7 @@ Wireshark: Utilized to monitor and capture network traffic, especially focusing 
 
 iptables & NAT configuration: Ensured traffic forwarding and seamless internet access for the target machine while maintaining control over the traffic.
 
-### Challenges
+## Challenges
 
 Network configuration issues: The initial issue of not being able to see devices on the network due to the VM being in NAT mode was resolved by switching to Bridge mode.
 
@@ -77,7 +77,7 @@ Network connection instability: The target phone often blocked the attack due to
 
 Packet forwarding and NAT rules: Proper setup of traffic forwarding and configuring the NAT table was essential to ensure the target's internet connection remained active during the attack.
 
-### Attack Verification
+## Attack Verification
 
 The success of the ARP spoofing attack was verified by:
 
@@ -85,7 +85,7 @@ Monitoring network traffic on Wireshark, where I could see the packets from the 
 
 Successfully intercepting sensitive data (such as credentials) from the victim machine by capturing unencrypted HTTP POST requests.
 
-### Risks of ARP Spoofing
+## Risks of ARP Spoofing
 ARP spoofing in public networks poses serious risks, including:
 
 Data interception: Sensitive data like login credentials can be intercepted, leading to identity theft, fraud, or impersonation.
@@ -94,7 +94,7 @@ Denial of Service (DoS): The attack can cause network disruption if not mitigate
 
 MITM attacks: The attacker can inject malicious content or alter communications between devices.\
 
-### Defensive Measures
+## Defensive Measures
 
 To protect against ARP spoofing, I recommend:
 
